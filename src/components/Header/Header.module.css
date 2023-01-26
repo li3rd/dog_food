@@ -1,0 +1,61 @@
+.header {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  padding: 0;
+  height: 100%;
+}
+.navigation_list li {
+  display: inline-flex;
+  outline: none;
+  padding: 0 5px;
+  height: 100%;
+  align-items: center;
+  margin-right: 10px;
+}
+.heart, .cart, .profile {
+stroke: #2C4857;
+fill: none;
+width: 30px;
+height: 30px;
+}
+.logo {
+  stroke: #2C4857;
+  fill:none;
+  width: 90px;
+  height: 90px;
+}
+.logo:hover {
+  stroke: tomato
+}
+.header a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #2C4857;
+}
+.navigation_list li:hover a, .navigation_list li:hover :first-child{
+  stroke: tomato;
+  color: tomato
+}
+.header input {
+  width: 400px;
+  border-radius: 0.4rem;
+  font-size: 17px;
+  outline: none;
+  border: none;
+  height: calc(1.25rem + 2px);
+  padding: 1rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  border: 1px solid #bdbdbd;
+}

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.image {
+  height: 270px;
+  width: 270px;
+  position: relative;
+}
+.likes {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  stroke: tomato;
+  fill: none;
+  width: 24px;
+  height: 24px;
+}
+.image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}

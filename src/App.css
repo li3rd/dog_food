@@ -1,0 +1,30 @@
+.App {
+  min-height: 100vh;
+  min-width: 100vw;
+background: radial-gradient(98.03% 98.03% at 50.13% 1.97%, rgba(59, 95, 132, 0.3) 0%, rgba(59, 95, 132, 0.078392) 61.46%, rgba(59, 95, 132, 0) 100%);
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+a {
+  text-decoration: none;
+  color: #2C4857;
+}
+button {
+  background-color: #2C4857;
+  border: 1px solid #EFF2F4;
+  border-radius: .4rem;
+  min-width: 125px;
+  height: 35px;
+  color: #EFF2F4;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  padding: .5rem 1rem;
+  transition: border .1s ease, background-color .1s ease, color .1s ease;
+}
+button:hover {
+  background-color: #EFF2F4;
+  color: #2C4857;
+  border: 1px solid #2C4857;
+}
