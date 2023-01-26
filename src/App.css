@@ -5,6 +5,7 @@ background: radial-gradient(98.03% 98.03% at 50.13% 1.97%, rgba(59, 95, 132, 0.3
 display: flex;
 flex-direction: column;
 align-items: center;
+position: relative;
 }
 a {
   text-decoration: none;
