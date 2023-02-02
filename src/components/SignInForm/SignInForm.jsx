@@ -1,11 +1,10 @@
 import { useMutation } from '@tanstack/react-query';
 import classNames from 'classnames';
 import { ErrorMessage, Field, Form, Formik} from 'formik';
-import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { object, string } from 'yup';
 
-import { AppContext } from '../context/AppContextProvider';
+import { useAppContext } from '../context/AppContextProvider';
 import { Loader } from '../Loader/Loader';
 
 import signInStyles from './SignInForm.module.css'
@@ -13,7 +12,7 @@ import signInStyles from './SignInForm.module.css'
 
 export function SignInForm() {
 
-  const {setToken} = useContext(AppContext)
+  const {setToken} = useAppContext()
   const navigate = useNavigate()
   const {mutateAsync, isLoading, isError, error} = useMutation({
     mutationFn: (data) => fetch('https://api.react-learning.ru/signin', {

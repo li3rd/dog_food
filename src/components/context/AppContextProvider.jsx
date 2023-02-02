@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
 
@@ -11,7 +11,6 @@ export function AppContextProvider ({children}) {
     return tokenLS || ''
   })
 
-
   useEffect(() => {
     localStorage.setItem('token', token)
   },[token])
@@ -22,3 +21,4 @@ export function AppContextProvider ({children}) {
     </AppContext.Provider>
   )
 }
+export const useAppContext = () => useContext(AppContext)

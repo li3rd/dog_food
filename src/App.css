@@ -1,6 +1,5 @@
 .App {
   min-height: 100vh;
-  min-width: 100vw;
 background: radial-gradient(98.03% 98.03% at 50.13% 1.97%, rgba(59, 95, 132, 0.3) 0%, rgba(59, 95, 132, 0.078392) 61.46%, rgba(59, 95, 132, 0) 100%);
 display: flex;
 flex-direction: column;
@@ -28,4 +27,13 @@ button:hover {
   background-color: #EFF2F4;
   color: #2C4857;
   border: 1px solid #2C4857;
+}
+.container {
+  min-height: calc(100vh - 340px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+  width: 100%;
+  padding-top: 50px;
 }

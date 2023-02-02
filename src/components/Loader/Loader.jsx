@@ -1,8 +1,8 @@
-
+import loaderStyles from './Loader.module.css'
 
 export const Loader = () => {
 
   return (
-    <p>Loading...</p>
+    <span className={loaderStyles.loader}></span>
   )
 }

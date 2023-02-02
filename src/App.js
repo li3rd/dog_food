@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Outlet } from 'react-router-dom';
 
 import './App.css';
@@ -7,7 +8,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Outlet />
+      <div className={classNames('container')}>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

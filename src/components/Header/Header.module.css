@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 40px;
 }
 .navigation {
   display: flex;
@@ -58,4 +57,7 @@ height: 30px;
   font-weight: 400;
   line-height: 1.5;
   border: 1px solid #bdbdbd;
+}
+.header input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
 }

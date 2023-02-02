@@ -1,7 +1,6 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { AppContext } from '../context/AppContextProvider';
+import { useAppContext } from '../context/AppContextProvider';
 
 import {ReactComponent as Logo} from '../icons/logo.svg'
 import {ReactComponent as Heart} from '../icons/heart.svg'
@@ -14,10 +13,11 @@ import headerStyles from './Header.module.css'
 
 export function Header() {
 
-  const {token, setToken} = useContext(AppContext)
+  const {token, setToken, setProducts} = useAppContext()
   const logOutHandler = () => {
     if (token) {
       setToken('')
+      setProducts(null)
     }
   }
   return (
