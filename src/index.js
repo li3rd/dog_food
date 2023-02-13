@@ -1,18 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Provider } from 'react-redux';
 
 import './index.css';
 import App from './App';
 import { Main } from './components/Main/Main';
-
-
 import { SignInForm } from './components/SignInForm/SignInForm';
 import { SignUpForm } from './components/SignUpForm/SignUpForm';
 import { Products } from './components/Products/Products';
-import { AppContextProvider } from './components/context/AppContextProvider';
+import { store } from './store/store';
+import { Cart } from './components/Cart/Cart';
 
 
 const myRouter = createBrowserRouter([
@@ -35,6 +34,10 @@ const myRouter = createBrowserRouter([
       {
         path: 'products',
         element: <Products />
+      },
+      {
+        path: 'cart',
+        element: <Cart />
       }
     ]
   },
@@ -53,9 +56,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <AppContextProvider>
+      <Provider store={store}>
         <RouterProvider router={myRouter} />
-      </AppContextProvider>
+      </Provider>
     </QueryClientProvider>
   </React.StrictMode>
 );

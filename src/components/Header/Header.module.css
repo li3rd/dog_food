@@ -45,6 +45,9 @@ height: 30px;
   stroke: tomato;
   color: tomato
 }
+.navigation_list li:nth-child(2) span {
+  position: relative;
+}
 .header input {
   width: 400px;
   border-radius: 0.4rem;
@@ -60,4 +63,10 @@ height: 30px;
 }
 .header input:focus {
   box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+}
+.amount {
+  position: absolute;
+  color: black;
+  right: 5px;
+  top: 5px;
 }

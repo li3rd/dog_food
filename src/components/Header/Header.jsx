@@ -1,24 +1,34 @@
 import { Link } from 'react-router-dom';
-
-import { useAppContext } from '../context/AppContextProvider';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {ReactComponent as Logo} from '../icons/logo.svg'
 import {ReactComponent as Heart} from '../icons/heart.svg'
 import {ReactComponent as Cart} from '../icons/cart.svg'
 import {ReactComponent as Profile} from '../icons/profile.svg'
+import { getUserToken, logOut } from '../../store/slices/user.slice';
+import { clearCart, getCartProducts } from '../../store/slices/cartSlice';
 
 import headerStyles from './Header.module.css'
 
 
 
-export function Header() {
 
-  const {token, setToken, setProducts} = useAppContext()
+export function Header() {
+  const token = useSelector(getUserToken)
+  const cartProductsAmount = useSelector(getCartProducts).length
+  const dispatch = useDispatch()
+  
   const logOutHandler = () => {
     if (token) {
-      setToken('')
-      setProducts(null)
+      dispatch(logOut())
+      dispatch(clearCart())
     }
+  }
+  const ShowAmount = () => {
+    if (cartProductsAmount) return (
+      <span className={headerStyles.amount}>{cartProductsAmount}</span>
+    ) 
+    return null
   }
   return (
     <div className={headerStyles.header}>
@@ -35,8 +45,10 @@ export function Header() {
             </Link>
           </li>
           <li>
-            <Link to="">
-              <span><Cart className={headerStyles.cart}/></span>
+            <Link to="/cart">
+              <span><Cart className={headerStyles.cart}/>
+                <ShowAmount />
+              </span>
               <span>Корзина</span>
             </Link>
           </li>

@@ -1,0 +1,13 @@
+.buttonContainer {
+  display: flex;
+}
+.buttonContainer button {
+  min-width: initial;
+  padding: 0.5rem 10px;
+}
+.buttonContainer span {
+  min-width: 35px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 500;
+}

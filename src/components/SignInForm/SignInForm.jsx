@@ -1,10 +1,12 @@
 import { useMutation } from '@tanstack/react-query';
 import classNames from 'classnames';
 import { ErrorMessage, Field, Form, Formik} from 'formik';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { object, string } from 'yup';
 
-import { useAppContext } from '../context/AppContextProvider';
+import { cartInitialize } from '../../store/slices/cartSlice';
+import { logIn } from '../../store/slices/user.slice';
 import { Loader } from '../Loader/Loader';
 
 import signInStyles from './SignInForm.module.css'
@@ -12,8 +14,8 @@ import signInStyles from './SignInForm.module.css'
 
 export function SignInForm() {
 
-  const {setToken} = useAppContext()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const {mutateAsync, isLoading, isError, error} = useMutation({
     mutationFn: (data) => fetch('https://api.react-learning.ru/signin', {
       method: 'POST',
@@ -26,7 +28,8 @@ export function SignInForm() {
       return res.json()
     }).then(result => {
       if (result.token) {
-        setToken(result.token)
+        dispatch(cartInitialize(result))
+        dispatch(logIn(result))
         setTimeout(() => {navigate('/products')})
       } return result
     })
@@ -53,6 +56,7 @@ export function SignInForm() {
       )
     } return null
   }
+  
 
   return (
     <div className={signInStyles.container}>

@@ -4,7 +4,6 @@ import { faInstagram, faTelegram, faViber, faVk, faWhatsapp } from '@fortawesome
 
 import {ReactComponent as Logo} from '../icons/logo.svg'
 
-import { useAppContext } from '../context/AppContextProvider';
 
 import footerStyles from './Footer.module.css'
 
@@ -13,14 +12,8 @@ import footerStyles from './Footer.module.css'
 
 export function Footer () {
 
-  const {products} = useAppContext()
-
-  const containerStyle = {
-    'position': 'realtive'
-  }
-console.log(footerStyles.footer)
   return (
-    <div style={products ? containerStyle : null} className={footerStyles.footer}>
+    <div className={footerStyles.footer}>
       <div className={footerStyles.copyright}>
         <Link to="/">
           <Logo className={footerStyles.logo}/>
