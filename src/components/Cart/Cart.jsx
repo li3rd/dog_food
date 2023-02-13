@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { deleteAllCheckedProducts, 
-  deselectAllProducts, getCartProducts, selectAllProducts} from '../../store/slices/cartSlice'
+  deselectAllProducts, getCartProducts, selectAllProducts} from '../../store/slices/cart.slice'
 import { getUserToken } from '../../store/slices/user.slice'
 import { CartItem } from '../CartItem/CartItem'
 import { calcTotalDiscount, calcTotalNumber, calcTotalPrice } from '../helpers/helpersFunction'

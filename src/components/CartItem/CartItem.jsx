@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 
-import {deleteProduct, selectProduct } from '../../store/slices/cartSlice'
+import {deleteProduct, selectProduct } from '../../store/slices/cart.slice'
 import { GroupButton } from '../GroupButton/GroupButton'
 import productStyles from '../ProductCard/ProductCard.module.css'
 import { getCalcPrice } from '../utils/productsUtils'
@@ -11,7 +11,6 @@ import itemStyles from './CartItem.module.css'
 
 
 export function CartItem({id, name, stock, price, pictures, discount, wight, count, isChecked}) {
-  console.log(isChecked)
   const dispatch = useDispatch()
   const ShowDiscount = () => {
     if (discount !== 0) {return (

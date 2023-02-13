@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { addProductToCart, getCartProducts } from '../../store/slices/cartSlice'
+import { addProductToCart, getCartProducts } from '../../store/slices/cart.slice'
 import { GroupButton } from '../GroupButton/GroupButton'
 
 import {ReactComponent as Heart} from '../icons/heart.svg'

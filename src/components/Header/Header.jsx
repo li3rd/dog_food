@@ -6,7 +6,7 @@ import {ReactComponent as Heart} from '../icons/heart.svg'
 import {ReactComponent as Cart} from '../icons/cart.svg'
 import {ReactComponent as Profile} from '../icons/profile.svg'
 import { getUserToken, logOut } from '../../store/slices/user.slice';
-import { clearCart, getCartProducts } from '../../store/slices/cartSlice';
+import { clearCart, getCartProducts } from '../../store/slices/cart.slice';
 
 import headerStyles from './Header.module.css'
 

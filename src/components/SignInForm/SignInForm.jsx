@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { object, string } from 'yup';
 
-import { cartInitialize } from '../../store/slices/cartSlice';
+import { cartInitialize } from '../../store/slices/cart.slice';
 import { logIn } from '../../store/slices/user.slice';
 import { Loader } from '../Loader/Loader';
 

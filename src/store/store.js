@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { cartReducer, preloadedCartState } from './slices/cartSlice';
+import { cartReducer, preloadedCartState } from './slices/cart.slice';
 import { preloadedUserState, userReducer } from './slices/user.slice';
 
 

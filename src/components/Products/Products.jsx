@@ -1,10 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useSelector } from 'react-redux'
 
-import { getCartProducts } from '../../store/slices/cartSlice'
-
 import { getUserToken } from '../../store/slices/user.slice'
-import { store } from '../../store/store'
 
 import { withQuery } from '../HOCs/witQuery'
 import { ProductCard } from '../ProductCard/ProductCard'
@@ -14,8 +11,6 @@ import productsStyles from './Products.module.css'
 
 
 function ProductsInner ({products}) {
-  console.log(store.getState())
-  console.log(products)
   return (
     <div className={productsStyles.container}>
       {products.map(({_id: id, ...restProduct}) => (
@@ -23,7 +18,6 @@ function ProductsInner ({products}) {
       ))}
     </div>
   )
-  // return <p>Список пуст</p>
 }
 
 
