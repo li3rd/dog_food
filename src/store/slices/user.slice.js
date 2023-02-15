@@ -14,7 +14,7 @@ export const preloadedUserState = () => {
   return currentUser ? JSON.parse(currentUser) : userState
 }
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: 'user',
   initialState: userState,
   reducers: {

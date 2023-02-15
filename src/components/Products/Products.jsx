@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useSelector } from 'react-redux'
 
+import { getSearch } from '../../store/slices/search.slice'
 import { getUserToken } from '../../store/slices/user.slice'
 
 import { withQuery } from '../HOCs/witQuery'
@@ -24,19 +25,17 @@ function ProductsInner ({products}) {
 const ProductsWithQuery = withQuery(ProductsInner)
 
 export function Products() {
-
-  
   const token = useSelector(getUserToken)
+  const search = useSelector(getSearch)
   
   const {data: products, isLoading, refetch, isError, error} = useQuery({
-    queryKey: ['productsFetch'],
-    queryFn: () => fetch('https://api.react-learning.ru/products', {
+    queryKey: ['productsFetch', search],
+    queryFn: () => fetch(`https://api.react-learning.ru/products/search?query=${search}`, {
       headers: {
         authorization: `Bearer ${token}`
       }
     })
       .then(res => res.json())
-      .then(result => result.products)
   })
   return <ProductsWithQuery 
     isLoading={isLoading} 

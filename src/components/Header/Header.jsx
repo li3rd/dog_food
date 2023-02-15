@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { Search } from '../Search/Search';
 import {ReactComponent as Logo} from '../icons/logo.svg'
 import {ReactComponent as Heart} from '../icons/heart.svg'
 import {ReactComponent as Cart} from '../icons/cart.svg'
@@ -17,7 +18,14 @@ export function Header() {
   const token = useSelector(getUserToken)
   const cartProductsAmount = useSelector(getCartProducts).length
   const dispatch = useDispatch()
-  
+
+
+  const HideSearchBar = () => {
+    const location = useLocation()
+    if ((location.pathname === '/' || location.pathname === '/products') && token) return <Search />
+    return null
+  }
+
   const logOutHandler = () => {
     if (token) {
       dispatch(logOut())
@@ -35,7 +43,7 @@ export function Header() {
       <Link to="/">
         <Logo className={headerStyles.logo}/>
       </Link>
-      <input placeholder="поиск"></input>
+      <HideSearchBar />
       <nav className={headerStyles.navigation}>
         <ul className={headerStyles.navigation_list}>
           <li>

@@ -26,12 +26,36 @@ function CartInner ({cartProducts}) {
   const ShowTotalNumber = () => {
     const total = calcTotalNumber(cart)
     if (/[1]$/.test(total.toString()) && total !== 11) return (
-      <span>{total} товар</span>
+      <span style={{opacity: 0.7}}>{total} товар</span>
     )
     if (/[2,3,4]$/.test(total.toString()) && !/[1]+[2,3,4]$/.test(total.toString())) return (
-      <span>{total} товара</span>
+      <span style={{opacity: 0.7}}>{total} товара</span>
     )
-    return (<span>{total} товаров</span>)
+    return (<span style={{opacity: 0.7}}>{total} товаров</span>)
+  }
+
+  const ShowPurchaseInfo = () => {
+    if (cart.some(item => item.isChecked)) {
+      return (
+        <>
+          <div>
+            <span>Ваша корзина </span>
+            <ShowTotalNumber />
+          </div>
+          <div>
+            <span>Скидка </span>
+            <span style={{color: 'red'}}>- {calcTotalDiscount(cart, cartProducts)} &#8381;</span>
+          </div>
+          <div style={{fontSize: '17px'}}>
+            <span>Общая стоимость </span>
+            <span>{calcTotalPrice(cart, cartProducts)} &#8381;</span>
+          </div>
+          <button>Перейти к оформлению</button>
+        </>
+      )
+    } return (
+      <p>Выберите товары, чтобы перейти к оформлению</p>
+    )
   }
 
   if (cart.length === 0) {
@@ -62,21 +86,7 @@ function CartInner ({cartProducts}) {
       </div>
       <div className={cartStyles.info_wrapper}>
         <div className={cartStyles.info_container}>
-          <div>
-            <span>Ваша корзина: </span>
-            <ShowTotalNumber />
-          </div>
-          <div>
-            <span>Скидка: </span>
-            <span>{calcTotalDiscount(cart, cartProducts)} &#8381;</span>
-          </div>
-          <div>
-            <span>Общая стоимость: </span>
-            <span>{calcTotalPrice(cart, cartProducts)} &#8381;</span>
-          </div>
-          <div>
-            <button>перейти к оформлению</button>
-          </div>
+          <ShowPurchaseInfo />
         </div>
       </div>
     </div>

@@ -45,7 +45,7 @@ height: 30px;
   stroke: tomato;
   color: tomato
 }
-.navigation_list li:nth-child(2) span {
+.navigation_list li:nth-child(2) {
   position: relative;
 }
 .header input {
@@ -66,7 +66,13 @@ height: 30px;
 }
 .amount {
   position: absolute;
-  color: black;
+  color: white;
   right: 5px;
-  top: 5px;
+  top: -5px;
+  background: #2C4857;
+  min-width: 22px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
 }

@@ -11,3 +11,11 @@
   font-size: 19px;
   font-weight: 500;
 }
+.disabled {
+  opacity: .7;
+}
+.disabled:hover {
+  background-color: #2C4857;
+  border: 1px solid #EFF2F4;
+  color: #EFF2F4;
+}

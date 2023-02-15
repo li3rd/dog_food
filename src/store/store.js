@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { cartReducer, preloadedCartState } from './slices/cart.slice';
+import { searchReducer } from './slices/search.slice';
 import { preloadedUserState, userReducer } from './slices/user.slice';
 
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    search: searchReducer
   },
   preloadedState: {
     user: preloadedUserState(),

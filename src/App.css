@@ -13,10 +13,10 @@ a {
 button {
   background-color: #2C4857;
   border: 1px solid #EFF2F4;
+  color: #EFF2F4;
   border-radius: .4rem;
   min-width: 125px;
   height: 35px;
-  color: #EFF2F4;
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;
