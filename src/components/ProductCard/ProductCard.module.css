@@ -29,6 +29,9 @@
   height: 25px;
   cursor: pointer;
 }
+.likes:active {
+  scale: 0.9
+}
 .liked {
   fill: tomato;
 }

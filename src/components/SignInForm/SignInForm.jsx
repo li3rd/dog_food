@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { object, string } from 'yup';
 
 import { cartInitialize } from '../../store/slices/cart.slice';
+import { favoriteInitialize } from '../../store/slices/favorite.slice';
 import { logIn } from '../../store/slices/user.slice';
 import { Loader } from '../Loader/Loader';
 
@@ -29,6 +30,7 @@ export function SignInForm() {
     }).then(result => {
       if (result.token) {
         dispatch(cartInitialize(result))
+        dispatch(favoriteInitialize(result))
         dispatch(logIn(result))
         setTimeout(() => {navigate('/products')})
       } return result

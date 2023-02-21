@@ -12,6 +12,7 @@ import { SignUpForm } from './components/SignUpForm/SignUpForm';
 import { Products } from './components/Products/Products';
 import { store } from './store/store';
 import { Cart } from './components/Cart/Cart';
+import { Favorite } from './components/Favorite/Favorite';
 
 
 const myRouter = createBrowserRouter([
@@ -38,6 +39,10 @@ const myRouter = createBrowserRouter([
       {
         path: 'cart',
         element: <Cart />
+      },
+      {
+        path: 'favorite',
+        element: <Favorite />
       }
     ]
   },

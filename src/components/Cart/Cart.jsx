@@ -98,18 +98,21 @@ const CartWithQuery = withQuery(CartInner)
 export function Cart() {
   const token = useSelector(getUserToken)
   const cart = useSelector(getCartProducts)
-
-  const {data: cartProducts, isLoading, refetch, isError, error} = useQuery({
-    queryKey: ['cart', cart.length],
-    queryFn: () => Promise.all(cart.map((item) => item.id)
-      .map(id => fetch(`https://api.react-learning.ru/products/${id}`, {
-        headers: {
-          authorization: `Bearer ${token}`
-        }
-      })
-        .then(res => res.json())
-      )) 
+  const ids = cart.map((item) => item.id)
+console.log(cart)
+  const {data, isLoading, refetch, isError, error} = useQuery({
+    queryKey: ['cart', ids],
+    queryFn: () => Promise.all(ids.map(id => fetch(`https://api.react-learning.ru/products/${id}`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+      .then(res => res.json())
+    )),
+    keepPreviousData: true, 
   })
+
+  const cartProducts = data && data.filter((product) => ids.includes(product._id))
 
   return <CartWithQuery 
     isLoading={isLoading} 

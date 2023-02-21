@@ -27,6 +27,7 @@ const ProductsWithQuery = withQuery(ProductsInner)
 export function Products() {
   const token = useSelector(getUserToken)
   const search = useSelector(getSearch)
+  console.log('render products')
   
   const {data: products, isLoading, refetch, isError, error} = useQuery({
     queryKey: ['productsFetch', search],

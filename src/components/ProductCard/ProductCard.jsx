@@ -1,8 +1,8 @@
 import classNames from 'classnames'
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { addProductToCart, getCartProducts } from '../../store/slices/cart.slice'
+import { changeFavoriteProduct, getFavoriteProducts } from '../../store/slices/favorite.slice'
 import { GroupButton } from '../GroupButton/GroupButton'
 
 import {ReactComponent as Heart} from '../icons/heart.svg'
@@ -13,12 +13,14 @@ import productStyles from './ProductCard.module.css'
 
 export function ProductCard({id, name, stock, price, pictures, discount, wight}) {
 
-  const [liked, setLiked] = useState(false)
-  const isDiscount = discount !== 0
-
+  
   const cart = useSelector(getCartProducts)
-
+  const favorite = useSelector(getFavoriteProducts)
   const dispatch = useDispatch()
+  
+  const isDiscount = discount !== 0
+  const liked = (id) => favorite.find(item => item.id === id) ? true : false
+
   const addToCartHandler = () => {
     dispatch(addProductToCart(id))
   }
@@ -36,7 +38,7 @@ export function ProductCard({id, name, stock, price, pictures, discount, wight})
     )} return null
   }
   const heartHandler = () => {
-    setLiked((prev) => !prev)
+    dispatch(changeFavoriteProduct(id))
   }
   return (
     <div className={productStyles.container}>
@@ -47,7 +49,9 @@ export function ProductCard({id, name, stock, price, pictures, discount, wight})
       </div>
       <div className={productStyles.image}>
         <img src={pictures} alt=""/>
-        <Heart onClick={heartHandler} className={classNames([productStyles.likes], {[productStyles.liked]: liked})}/>
+        <Heart 
+          onClick={heartHandler} 
+          className={classNames([productStyles.likes], {[productStyles.liked]: liked(id)})}/>
       </div>
       <div className={productStyles.description_wrapper}>
         <span>В наличии: {stock} шт</span>

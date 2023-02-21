@@ -8,6 +8,7 @@ import {ReactComponent as Cart} from '../icons/cart.svg'
 import {ReactComponent as Profile} from '../icons/profile.svg'
 import { getUserToken, logOut } from '../../store/slices/user.slice';
 import { clearCart, getCartProducts } from '../../store/slices/cart.slice';
+import { clearFavorite, getFavoriteProducts } from '../../store/slices/favorite.slice';
 
 import headerStyles from './Header.module.css'
 
@@ -17,8 +18,9 @@ import headerStyles from './Header.module.css'
 export function Header() {
   const token = useSelector(getUserToken)
   const cartProductsAmount = useSelector(getCartProducts).length
+  const favoriteProductsAmount = useSelector(getFavoriteProducts).length
   const dispatch = useDispatch()
-
+console.log('render header')
 
   const HideSearchBar = () => {
     const location = useLocation()
@@ -30,9 +32,16 @@ export function Header() {
     if (token) {
       dispatch(logOut())
       dispatch(clearCart())
+      dispatch(clearFavorite())
     }
   }
-  const ShowAmount = () => {
+  const ShowFavoriteAmount = () => {
+    if (favoriteProductsAmount) return (
+      <span style={{right: '14px'}} className={headerStyles.amount}>{favoriteProductsAmount}</span>
+    ) 
+    return null
+  }
+  const ShowCartAmount = () => {
     if (cartProductsAmount) return (
       <span className={headerStyles.amount}>{cartProductsAmount}</span>
     ) 
@@ -47,15 +56,17 @@ export function Header() {
       <nav className={headerStyles.navigation}>
         <ul className={headerStyles.navigation_list}>
           <li>
-            <Link to="">
-              <span><Heart className={headerStyles.heart} /></span>
+            <Link to="/favorite">
+              <span><Heart className={headerStyles.heart}/>
+                <ShowFavoriteAmount />
+              </span>
               <span>Избранное</span>
             </Link>
           </li>
           <li>
             <Link to="/cart">
               <span><Cart className={headerStyles.cart}/>
-                <ShowAmount />
+                <ShowCartAmount />
               </span>
               <span>Корзина</span>
             </Link>

@@ -45,6 +45,9 @@ height: 30px;
   stroke: tomato;
   color: tomato
 }
+.navigation_list li:first-child {
+  position: relative;
+}
 .navigation_list li:nth-child(2) {
   position: relative;
 }
