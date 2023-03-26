@@ -22,7 +22,7 @@ export function Footer () {
       </div>
       <div className={footerStyles.links}>
         <ul>
-          <li><Link>Каталог</Link></li>
+          <li><Link to={'/products'}>Каталог</Link></li>
           <li><Link>Акции</Link></li>
           <li><Link>Новости</Link></li>
           <li><Link>Отзывы</Link></li>

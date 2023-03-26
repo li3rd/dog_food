@@ -11,7 +11,7 @@ export const store = configureStore({
     user: userReducer,
     cart: cartReducer,
     search: searchReducer,
-    favorite: favoriteReducer
+    favorite: favoriteReducer,
   },
   preloadedState: {
     user: preloadedUserState(),

@@ -2,11 +2,12 @@ import { useQuery } from '@tanstack/react-query'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { dfApi } from '../../api/DogFoodApi'
 import { deleteAllCheckedProducts, 
   deselectAllProducts, getCartProducts, selectAllProducts} from '../../store/slices/cart.slice'
 import { getUserToken } from '../../store/slices/user.slice'
 import { CartItem } from '../CartItem/CartItem'
-import { calcTotalDiscount, calcTotalNumber, calcTotalPrice } from '../helpers/helpersFunction'
+import { calcTotalDiscount, calcTotalNumber, calcTotalPrice } from '../helpers/cartHelpers'
 import { withQuery } from '../HOCs/witQuery'
 
 import cartStyles from './Cart.module.css'
@@ -15,7 +16,6 @@ import cartStyles from './Cart.module.css'
 function CartInner ({cartProducts}) {
   const cart = useSelector(getCartProducts)
   const dispatch = useDispatch()
-
   const allChecked = cart.every(item => item.isChecked)
   const getItemFromStateById = (id) => cart.find(product => product.id === id)
   const selectAllHandler = () => {
@@ -60,7 +60,7 @@ function CartInner ({cartProducts}) {
 
   if (cart.length === 0) {
     return (
-      <div style={{alignSelf: 'flex-start'}}>
+      <div style={{margin: 'auto'}}>
         <h1>Корзина пуста</h1>
         <br></br>
         <Link style={{margin: '45px'}} to="/products">Перейти в каталог</Link>
@@ -99,16 +99,9 @@ export function Cart() {
   const token = useSelector(getUserToken)
   const cart = useSelector(getCartProducts)
   const ids = cart.map((item) => item.id)
-console.log(cart)
   const {data, isLoading, refetch, isError, error} = useQuery({
     queryKey: ['cart', ids],
-    queryFn: () => Promise.all(ids.map(id => fetch(`https://api.react-learning.ru/products/${id}`, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
-      .then(res => res.json())
-    )),
+    queryFn: () => dfApi.getProductsByIds(ids, token),
     keepPreviousData: true, 
   })
 

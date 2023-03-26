@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { object, string } from 'yup';
 
+import { dfApi } from '../../api/DogFoodApi';
 import { cartInitialize } from '../../store/slices/cart.slice';
 import { favoriteInitialize } from '../../store/slices/favorite.slice';
 import { logIn } from '../../store/slices/user.slice';
@@ -18,16 +19,7 @@ export function SignInForm() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const {mutateAsync, isLoading, isError, error} = useMutation({
-    mutationFn: (data) => fetch('https://api.react-learning.ru/signin', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data)
-    }).then(res => {
-      if (res.status === 401) {throw new Error('Не правильные логин или пароль')}
-      if (res.status === 404) {throw new Error('Пользователь с email не найден')}
-      if (res.status === 400) {throw new Error('Некорректный запрос')}
-      return res.json()
-    }).then(result => {
+    mutationFn: (data) => dfApi.signIn(data).then(result => {
       if (result.token) {
         dispatch(cartInitialize(result))
         dispatch(favoriteInitialize(result))
@@ -37,7 +29,7 @@ export function SignInForm() {
     })
   })
 
-  const submitHadler = async (values) => {
+  const submitHandler = async (values) => {
     await mutateAsync(values)
   }
 
@@ -67,7 +59,7 @@ export function SignInForm() {
           email: '',
           password: ''}}
         validationSchema={SignInValidationSchema}
-        onSubmit={submitHadler}
+        onSubmit={submitHandler}
       >
         {({errors, touched}) => (
           <Form className={signInStyles.form}>

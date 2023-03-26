@@ -18,12 +18,16 @@
   height: 100%;
   align-items: center;
   margin-right: 10px;
+  position: relative
 }
-.heart, .cart, .profile {
+.heart, .cart, .profile, .add {
 stroke: #2C4857;
 fill: none;
 width: 30px;
 height: 30px;
+}
+.add {
+  fill: #2C4857;
 }
 .logo {
   stroke: #2C4857;
@@ -45,11 +49,8 @@ height: 30px;
   stroke: tomato;
   color: tomato
 }
-.navigation_list li:first-child {
-  position: relative;
-}
-.navigation_list li:nth-child(2) {
-  position: relative;
+.navigation_list li:hover a, .navigation_list li:nth-child(1):hover :first-child{
+  fill: tomato
 }
 .header input {
   width: 400px;

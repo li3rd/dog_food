@@ -1,0 +1,13 @@
+.rating-result {
+	width: 100%;
+  padding: 0;
+  display: flex;
+}
+.rating-result div {
+	padding: 0;
+	margin: 0 1px;
+  cursor: pointer
+}
+.readOnly div {
+  cursor: auto;
+}

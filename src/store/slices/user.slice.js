@@ -6,7 +6,8 @@ const userState = {
   email: '',
   group: '',
   token: '',
-  id: ''
+  id: '',
+  avatar: ''
 }
 
 export const preloadedUserState = () => {
@@ -29,8 +30,8 @@ const userSlice = createSlice({
             email: res.data.email,
             group: res.data.group,
             token: res.token,
-            id: res.data._id
-
+            id: res.data._id,
+            avatar: res.data.avatar
           }
         }
       }
@@ -43,4 +44,5 @@ const userSlice = createSlice({
 
 export const { logIn, logOut } = userSlice.actions
 export const getUserToken = state => state.user.token
+export const getUserId = state => state.user.id
 export const userReducer = userSlice.reducer

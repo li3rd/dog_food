@@ -13,6 +13,7 @@ import { Products } from './components/Products/Products';
 import { store } from './store/store';
 import { Cart } from './components/Cart/Cart';
 import { Favorite } from './components/Favorite/Favorite';
+import { ProductPage } from './components/ProductPage/ProductPage';
 
 
 const myRouter = createBrowserRouter([
@@ -43,6 +44,10 @@ const myRouter = createBrowserRouter([
       {
         path: 'favorite',
         element: <Favorite />
+      },
+      {
+        path: 'products/:productId',
+        element: <ProductPage />
       }
     ]
   },

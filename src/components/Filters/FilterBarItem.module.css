@@ -1,0 +1,20 @@
+.filterItem {
+  margin: 0 10px;
+  background-color: #EFF2F4;
+  color: #2C4857;
+  cursor: pointer;
+}
+.filterItem:hover {
+  color: tomato;
+  border: 1px solid transparent;
+}
+.isActive {
+  background-color: #2C4857;
+  border: 1px solid #EFF2F4;
+  color: #EFF2F4;
+}
+.isActive:hover {
+  background-color: #2C4857;
+  border: 1px solid #EFF2F4;
+  color: tomato
+}

@@ -4,6 +4,8 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { object, string } from 'yup';
 
+import { dfApi } from '../../api/DogFoodApi';
+
 import { Loader } from '../Loader/Loader';
 import signInStyles from '../SignInForm/SignInForm.module.css'
 
@@ -12,15 +14,7 @@ export function SignUpForm() {
   
   const navigate = useNavigate()
   const {mutateAsync, isLoading, isError, error} = useMutation({
-    mutationFn: (data) => fetch('https://api.react-learning.ru/signup', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data)
-    }).then(res => {
-      if (res.status === 409) {throw new Error('Пользователь с данным email уже существует')}
-      if (res.status === 400) {throw new Error('Некорректно заполнено одно из полей')}
-      return res.json()
-    })
+    mutationFn: (data) => dfApi.signUp(data)
   })
 
   const submitHadler = async (values) => {

@@ -15,10 +15,15 @@ export function Search () {
   const dispatch = useDispatch()
   const dbSearchValue = useDebounce(search)
 
+  useEffect(()=> {
+    setSearch(searchParams.get('q') ?? '')
+  },[searchParams, search])
+
   const onChangeSearchHandler = (ev) => {
     const searchValue = ev.target.value
     setSearch(searchValue)
     setSearchParams({
+      ...Object.fromEntries(searchParams.entries()),
       q: searchValue
     })
   }

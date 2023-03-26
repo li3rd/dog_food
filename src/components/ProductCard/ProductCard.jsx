@@ -21,7 +21,8 @@ export function ProductCard({id, name, stock, price, pictures, discount, wight})
   const isDiscount = discount !== 0
   const liked = (id) => favorite.find(item => item.id === id) ? true : false
 
-  const addToCartHandler = () => {
+  const addToCartHandler = (ev) => {
+    ev.preventDefault()
     dispatch(addProductToCart(id))
   }
   const ShowButtons = ({id, stock}) => {
@@ -37,7 +38,8 @@ export function ProductCard({id, name, stock, price, pictures, discount, wight})
       <span className={productStyles.price}>{price} &#8381;</span>
     )} return null
   }
-  const heartHandler = () => {
+  const heartHandler = (ev) => {
+    ev.preventDefault()
     dispatch(changeFavoriteProduct(id))
   }
   return (

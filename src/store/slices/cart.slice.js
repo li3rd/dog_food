@@ -70,10 +70,10 @@ const cartSlice = createSlice({
       if (currentProduct) currentProduct.isChecked = !currentProduct.isChecked
     },
     selectAllProducts(state) {
-      state.map((product) => !product.isChecked ? product.isChecked = true : product.isChecked)
+      state.forEach((product) => product.isChecked = true)
     },
     deselectAllProducts(state) {
-      state.map(product => product.isChecked = false)
+      state.forEach(product => product.isChecked = false)
     }
   }
 })

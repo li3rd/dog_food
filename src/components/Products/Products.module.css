@@ -4,3 +4,6 @@
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 25px;
 }
+.container a, .container a:hover {
+  color: inherit;
+}

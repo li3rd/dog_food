@@ -17,6 +17,7 @@
   object-fit: cover;
   width: 100%;
   height: 100%;
+  aspect-ratio: 1 / 1;
 }
 .price {
   display: flex;
@@ -28,15 +29,36 @@
   display: flex;
   flex-direction: column;
 }
-.description span:last-child {
+.description .addFavorite {
   align-self: center;
   margin-bottom: 6px;
   font-size: 15px;
   cursor: pointer;
-  margin-left: 75px;
-  color: tomato;
+  margin-left: 45px;
+  font-weight: 500;
+  min-width: 93px;
+  color: #2C4857
+}
+.description span:nth-child(3)::before{
+  content: '|';
+  color: black;
+  margin-right: 15px;
+}
+.description .addFavorite:hover {
+  color: black
+}
+.description span:nth-child(3) {
+  align-self: center;
+  margin-bottom: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: 11px;
+  color: #2C4857;
   font-weight: 500;
 }
 .description span:last-child:hover {
-  color: red;
+  color: tomato;
+}
+.description .isFavorite{
+  color: tomato
 }

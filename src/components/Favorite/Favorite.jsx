@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/react-query'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { dfApi } from '../../api/DogFoodApi'
 import { getFavoriteProducts } from '../../store/slices/favorite.slice'
 import { getUserToken } from '../../store/slices/user.slice'
-
 import { withQuery } from '../HOCs/witQuery'
 import { ProductCard } from '../ProductCard/ProductCard'
 
@@ -16,7 +16,7 @@ function FavoriteInner ({favoriteProducts}) {
   const favorite = useSelector(getFavoriteProducts)
   if (favorite.length === 0) {
     return (
-      <div style={{alignSelf: 'flex-start'}}>
+      <div style={{margin:'auto'}}>
         <h1>В избранном пусто</h1>
         <br></br>
         <Link style={{margin: '82px'}} to="/products">Перейти в каталог</Link>
@@ -26,7 +26,7 @@ function FavoriteInner ({favoriteProducts}) {
   return (
     <div className={productsStyles.container}>
       {favoriteProducts.map(({_id: id, ...restProduct}) => (
-        <ProductCard {...restProduct} id={id} key={id}/>
+        <Link key={id} to={`/products/${id}`}><ProductCard {...restProduct} id={id} key={id}/></Link>
       ))}
     </div>
   )
@@ -42,13 +42,7 @@ export function Favorite() {
 
   const {data, isLoading, refetch, isError, error} = useQuery({
     queryKey: ['favorite', ids],
-    queryFn: () => Promise.all(ids.map(id => fetch(`https://api.react-learning.ru/products/${id}`, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
-      .then(res => res.json())
-    )),
+    queryFn: () => dfApi.getProductsByIds(ids, token),
     keepPreviousData: true, 
   })
 

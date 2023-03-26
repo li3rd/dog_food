@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
+  margin-left: -26px;
 }
 p {
   font-weight: 500;
@@ -154,20 +154,16 @@ p {
 }
 .form button {
   align-self: center;
+  margin-left: 26px;
 }
-.redirect {
-  display: flex;
-  margin-top: 5px;
-  flex-direction: column;
-  align-items: center;
+.withNumber input[type="number"]::-webkit-outer-spin-button,
+.withNumber input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }
-.redirect span {
-  margin-bottom: 3px;
-}
-.redirect a {
-  font-size: 16px;
-  transition: font-size .1s ease;
-}
-.redirect a:hover {
-  font-size: 17px;
+
+.withNumber input[type='number'],
+.withNumber input[type="number"]:hover,
+.withNumber input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
 }
