@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 
 import { dfApi } from '../../api/DogFoodApi'
 import { getSearch } from '../../store/slices/search.slice'
@@ -55,7 +56,12 @@ const ProductsWithQuery = withQuery(ProductsInner)
 export function Products() {
   const token = useSelector(getUserToken)
   const search = useSelector(getSearch)
+  const navigate = useNavigate()
   
+  useEffect(() => {
+    if (!token) navigate('/signin')
+  })
+
   const {data: products, isLoading, refetch, isError, error} = useQuery({
     queryKey: ['productsFetch', search],
     queryFn: () => dfApi.getAllProducts(search, token)

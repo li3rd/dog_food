@@ -27,7 +27,7 @@ export function CommentItem({rating, id, author, text, created_at}) {
 
   const deleteHandler = async () => {
     await mutateAsync()
-    await queryClient.refetchQueries({ queryKey: ['comments'], type: 'active' })}
+    await queryClient.refetchQueries()}
 
   return (
     <>

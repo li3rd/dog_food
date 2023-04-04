@@ -49,9 +49,12 @@ height: 30px;
   stroke: tomato;
   color: tomato
 }
-.navigation_list li:hover a, .navigation_list li:nth-child(1):hover :first-child{
-  fill: tomato
+.navigation_list li:hover :first-child .add {
+  fill: tomato;
 }
+/* .navigation_list li:hover a, .navigation_list li:nth-child(1):hover :first-child{
+  fill: tomato
+} */
 .header input {
   width: 400px;
   border-radius: 0.4rem;
